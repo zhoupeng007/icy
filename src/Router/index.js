@@ -2,9 +2,9 @@ import {HashRouter as Router,Route,Redirect,Switch} from 'react-router-dom'
 import React from 'react'
 import App from '../App'
 import {Provider} from 'react-redux'
-import Designer from '../Designer'
-import Icon from '../Icon'
-import Goods from '../Goods'
+import Designer from '../views/Designer'
+import Icon from '../views/Icon'
+import Goods from '../views/Goods'
 import store from './../Redux/store'
 const router = (
   <Provider store={store}>
