@@ -1,0 +1,32 @@
+.Tabbar{
+  background-color: #fff;
+  bottom: 0;
+  color: #000;
+  font-size: 32px;
+  height: 74px;
+  line-height: 74px;
+  padding: 13px 0;
+  position: fixed;
+  width: 750px;
+  z-index: 200;
+  .bf{
+    height: 10px;
+    position: absolute;
+    top: -10px;
+    width: 750px;
+  }
+  .navlink{
+    cursor: pointer;
+    display: block;
+    color: #aaa;
+    height: 74px;
+    position: relative;
+    text-align: center;
+    width: 25%;
+    float: left;
+  }
+  .tabselect{
+    color: #000 !important;
+    border-bottom: 5px solid #000;
+  }
+}
