@@ -1,0 +1,72 @@
+ul{
+    list-style: none;
+}
+.IconWaterfull_div{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    .IconWaterfull_ul{
+        width: 50%;
+        border: 10px solid #f5f5f5;
+        box-sizing: border-box;
+        background-color: #f5f5f5;
+        .IconWaterfull_li{
+            width: 100%;
+            background-color: #fff;
+            margin-bottom:20px;
+        }
+        .IconWaterfull_tsli{
+            width: 100%;
+            background-color: #fff;
+            margin-bottom:20px;
+        }
+    }
+    .IconWaterfull_img{
+        width: 100%; 
+        height: 658px;
+    }
+    .IconWaterfull_tsimg{
+        width: 100%; 
+        height: 458px;
+    }
+    .IconWaterfull_bottom{
+        width: 100%;
+        height: 150px;
+        position: relative;
+        .IconWaterfull_pu{
+            color: #333;
+            font-size: 24px;
+            line-height: 30px;
+            margin-bottom: 6px;
+            margin-right: 20px;
+            margin-top: 5px;
+            position: absolute;
+            left: 150px;
+        }
+        .IconWaterfull_pi{
+            color: #999;
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 30px;
+            margin-right: 20px;
+            margin-top: 6px;
+            position: absolute;
+            left: 150px;
+            top:40px;
+
+        }
+        .IconWaterfull_bottom_img{
+            position: absolute;
+            width: 94px;
+            height: 94px;            
+            border-radius: 50%;
+            left: 10%;
+            top: -20%;
+        }
+        .IconWaterfull_bottom_smallimg{
+            position: absolute;
+            left:28%;
+            top:35%;
+        }
+    }
+}
