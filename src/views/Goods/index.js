@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import css from './index.module.scss'
-import Swiper from 'swiper/dist/js/swiper.js'
+import Swiper from 'swiper/dist/js/swiper'
 import 'swiper/dist/css/swiper.min.css'
 class Goods extends React.Component{
   render(){
