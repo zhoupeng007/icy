@@ -5,5 +5,4 @@ module.exports = function(app) {
   // https://icy.design/m.php?method=Userinfo.get&appId=4
   // https://icy.design/icym.php?method=icy.getHome&appId=4&page=1&pageSize=20
   app.use(proxy('/m.php', { target: 'https://icy.design',changeOrigin:true }));
-
-};
+}
