@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react'
 import axios from "axios"
+// import scss from '../../Icon/IconWaterfull/scss.module.scss'
 import scss from './scss.module.scss'
 import { PullToRefresh } from 'antd-mobile'
 import ReactDOM from 'react-dom'
 import {withRouter} from "react-router"
-class IconWaterfull extends PureComponent {
+class DetailWaterfull extends PureComponent {
     ptr = null
     render() {
         return (
@@ -21,11 +22,11 @@ class IconWaterfull extends PureComponent {
                         refreshing={this.state.refreshing}
                         onRefresh={() => {
                             this.setState({ refreshing: true })
-                            axios.get(`/icym.php?method=icy.getCollocationList&appId=4&page=${this.state.page}&pageSize=10&categoryId=${this.state.id}`).then(res => {
+                            axios.get(`m.php?method=icy.getRecommendLook&appId=4&collocationId=${this.state.id}&page=${this.state.page}&pageSize=10`).then(res => {
                                 var pages = JSON.parse(JSON.stringify(this.state.page))
                                 // console.log(pages)
                                 this.setState({
-                                    waterfulllist: [...this.state.waterfulllist, ...res.data.data.list],
+                                    DetailWaterfull: [...this.state.DetailWaterfull, ...res.data.data.recommendLook],
                                     refreshing: false,
                                     page: pages++
                                 })
@@ -34,8 +35,8 @@ class IconWaterfull extends PureComponent {
                     >
                         <ul className={scss.IconWaterfull_ul}>
                             {
-                                this.state.waterfulllist.map((item, index) =>
-                                    <li key={index} className={index === 1 ? scss.IconWaterfull_tsli : scss.IconWaterfull_li} onClick={()=>this.handeClick(item.collocationId)}>
+                                this.state.DetailWaterfull.map((item, index) =>
+                                    <li key={index} className={index === 1 ? scss.IconWaterfull_tsli : scss.IconWaterfull_li} onClick={()=>this.handeClick(item.link)}>
                                         <img src={this.imagesrc(item.image.image)} alt="暂无此图片" className={index === 1 ? scss.IconWaterfull_tsimg : scss.IconWaterfull_img} />
                                         {
                                             item.type === 0 ?
@@ -65,33 +66,39 @@ class IconWaterfull extends PureComponent {
         return "https://image3.ichuanyi.cn/" + src
     }
     state = {
-        waterfulllist: [],
-        id: 0,
+        DetailWaterfull: [],
+        id: 1476334430,
         refreshing: false,
         height: 0,
         page: 2,
+        refdataillist:[]
     }
-    handeClick = (id)=>{
-        // console.log(id)
+    handeClick = (myid)=>{
+        const id1 = myid.split("=")[1]
+        const id2 = id1.split("&")[0]
+        // console.log(id2)
         // console.log(this.props)
-        this.props.history.replace(`/icy/suitDetail/${id}`)
+        // console.log(this.props.match.params.id)
+        this.props.history.replace(`/icy/suitDetail/${id2}`)
     }
     componentDidMount() {
+        // console.log(this.props)
         // console.log(ReactDOM.findDOMNode(this.ptr).offsetTop)
-        axios.get(`/icym.php?method=icy.getCollocationList&appId=4&page=1&pageSize=10&categoryId=${this.state.id}`).then(res => {
+        axios.get(`/m.php?method=icy.getRecommendLook&appId=4&collocationId=${this.state.id}&page=${this.state.page}&pageSize=10`).then(res => {
             this.setState({
-                waterfulllist: res.data.data.list,
-                height: document.documentElement.clientHeight - ReactDOM.findDOMNode(this.ptr).offsetTop + "px"
+                DetailWaterfull: res.data.data.recommendLook,
+                height: document.documentElement.clientHeight - ReactDOM.findDOMNode(this.ptr).offsetTop + 1000 + "px"
+                
             })
         })
     }
     componentWillReceiveProps(props) {
-        // console.log(props)
+        // console.log(props.DetailWaterfull)
         this.setState({
-            waterfulllist: props.waterfull,
+            DetailWaterfull: props.DetailWaterfull,
             id: props.myid,
         })
     }
 }
 
-export default withRouter(IconWaterfull)
+export default withRouter(DetailWaterfull)
