@@ -6,6 +6,7 @@ import Designer from '../views/Designer'
 import Icon from '../views/Icon'
 import Goods from '../views/Goods'
 import store from './../Redux/store'
+import Suitdetail from './../views/Suitdetail'
 const router = (
   <Provider store={store}>
     <Router>
@@ -17,6 +18,7 @@ const router = (
               </Designer>
           }/>
           <Route path="/icy/icon" component={Icon}/>
+          <Route path="/icy/suitDetail" component={Suitdetail}/>
           <Route path="/icy/goods" render={()=>
             <Goods />
           }/>
