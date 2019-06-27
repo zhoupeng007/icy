@@ -4,7 +4,7 @@ import axios from "axios"
 import scss from './scss.module.scss'
 import { PullToRefresh } from 'antd-mobile'
 import ReactDOM from 'react-dom'
-import {withRouter} from "react-router"
+import { withRouter } from "react-router"
 class DetailWaterfull extends PureComponent {
     ptr = null
     render() {
@@ -36,19 +36,15 @@ class DetailWaterfull extends PureComponent {
                         <ul className={scss.IconWaterfull_ul}>
                             {
                                 this.state.DetailWaterfull.map((item, index) =>
-                                    <li key={index} className={index === 1 ? scss.IconWaterfull_tsli : scss.IconWaterfull_li} onClick={()=>this.handeClick(item.link)}>
+                                    <li key={index} className={index === 1 ? scss.IconWaterfull_tsli : scss.IconWaterfull_li} onClick={() => this.handeClick(item.link)}>
                                         <img src={this.imagesrc(item.image.image)} alt="暂无此图片" className={index === 1 ? scss.IconWaterfull_tsimg : scss.IconWaterfull_img} />
-                                        {
-                                            item.type === 0 ?
-                                                <div className={scss.IconWaterfull_bottom}>
-                                                    <img src={this.imagesrc(item.avatar)} alt="暂无此图片" className={scss.IconWaterfull_bottom_img} />
-                                                    <img src="https://image3.ichuanyi.cn/group3/M00/9E/46/CgAAGlhwadAEAAAAAAAAAM6Loeg797.png" alt="暂无此图片" className={scss.IconWaterfull_bottom_smallimg} />
+                                        <div className={scss.IconWaterfull_bottom}>
+                                            <img src={this.imagesrc(item.avatar)} alt="暂无此图片" className={scss.IconWaterfull_bottom_img} />
+                                            <img src="https://image3.ichuanyi.cn/group3/M00/9E/46/CgAAGlhwadAEAAAAAAAAAM6Loeg797.png" alt="暂无此图片" className={scss.IconWaterfull_bottom_smallimg} />
 
-                                                    <p className={scss.IconWaterfull_pu}>{item.username}</p>
-                                                    <p className={scss.IconWaterfull_pi}>{item.introduce}</p>
-                                                </div>
-                                                : ''
-                                        }
+                                            <p className={scss.IconWaterfull_pu}>{item.username}</p>
+                                            <p className={scss.IconWaterfull_pi}>{item.introduce}</p>
+                                        </div>
                                     </li>
                                 )
                             }
@@ -71,9 +67,9 @@ class DetailWaterfull extends PureComponent {
         refreshing: false,
         height: 0,
         page: 2,
-        refdataillist:[]
+        refdataillist: []
     }
-    handeClick = (myid)=>{
+    handeClick = (myid) => {
         const id1 = myid.split("=")[1]
         const id2 = id1.split("&")[0]
         // console.log(id2)
@@ -89,7 +85,7 @@ class DetailWaterfull extends PureComponent {
             this.setState({
                 DetailWaterfull: res.data.data.recommendLook,
                 height: document.documentElement.clientHeight - ReactDOM.findDOMNode(this.ptr).offsetTop + 1000 + "px"
-                
+
             })
         })
     }
