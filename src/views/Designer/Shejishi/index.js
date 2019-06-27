@@ -1,4 +1,5 @@
 import React from 'react'
+// eslint-disable-next-line
 import css from './index.module.scss'
 
 class Shejishi extends React.Component{

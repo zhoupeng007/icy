@@ -27,8 +27,11 @@ class Designer extends React.Component{
 
 const mapStateToProps = ()=>{
   return {
-
+    
   }
 }
+const mapDispatchToProps = {
+  
+}
 
-export default connect(mapStateToProps)(Designer)
+export default connect(mapStateToProps,mapDispatchToProps)(Designer)
