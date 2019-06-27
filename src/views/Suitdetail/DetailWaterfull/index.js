@@ -77,6 +77,7 @@ class DetailWaterfull extends PureComponent {
         // console.log(this.props.match.params.id)
         this.props.history.replace(`/icy/suitDetail/${id2}`)
         window.location.reload();
+
     }
     componentDidMount() {
         // console.log(this.props)

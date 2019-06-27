@@ -29,7 +29,6 @@ class Swipe extends React.Component{
   }
   componentDidMount(){
     axios.get('icym.php?method=icy.getHome&appId=4&page=1&pageSize=20').then(res=>{
-      console.log(res.data.data.list[0].list)
       this.setState({
         datalist: res.data.data.list[0].list
       },()=>{
@@ -50,4 +49,5 @@ class Swipe extends React.Component{
   }
 }
 // https://image3.ichuanyi.cn/ai-admin/eee6bb09366cf2ae76761ff909527e02.jpg
+
 export default Swipe

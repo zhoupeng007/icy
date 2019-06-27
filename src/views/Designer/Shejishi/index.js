@@ -22,7 +22,6 @@ class Shejishi extends React.Component{
     </div>
   }
   componentWillReceiveProps(props){
-    console.log(props.list[1].list[0])
     this.setState({
       list: props.list[1].list[0]
     })
