@@ -5,16 +5,20 @@ import Shejishi from './Shejishi'
 import {connect} from 'react-redux'
 import Baokuan from './baokuan'
 import Xinpin from './Xinpin'
+import Mingxing from './Mingxing'
 class Designer extends React.Component{
   state = {
     list:[]
   }
   render(){
-    return <div>
+    return <div style={{
+      marginBottom:'74px'
+    }}>
       <Swipe />
       <Shejishi list={this.state.list}/>
       <Baokuan list={this.state.list}/>
       <Xinpin list={this.state.list}/>
+      <Mingxing list={this.state.list}/>
     </div>
   }
   componentWillMount(){
