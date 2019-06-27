@@ -15,7 +15,7 @@ class Suitdetail extends React.Component {
     render() {
         const item = this.state.detailtop
         const goodss = this.state.goods
-        console.log(goodss)
+        // console.log(goodss)
         return (
             <div className={scss.all}>
                 <h1 className={scss.heaher_h1}>搭配详情</h1>
@@ -55,7 +55,7 @@ class Suitdetail extends React.Component {
                         <img src={this.imgsrc(item.avatar)} alt="暂无此图" className={scss.header_top_bottom_img}/>
                         <div className={scss.header_top_bottom_div_right}>
                             <p className={scss.header_top_bottom_div_p1}>{goodss.name}</p>
-                            <p className={scss.header_top_bottom_div_p2}><span className={scss.header_top_bottom_div_p2_span}>{goodss.colors}</span><span className={scss.header_top_bottom_div_p2_span}>{goodss.colors}</span></p>
+                            <p className={scss.header_top_bottom_div_p2}><span className={scss.header_top_bottom_div_p2_span}>{goodss.colors}</span></p>
                             <p className={scss.header_top_bottom_div_p3}>￥{goodss.price}</p>
                         </div>
                     </div>
