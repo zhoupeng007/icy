@@ -21,10 +21,12 @@ class IconWaterfull extends PureComponent {
                         onRefresh={() => {
                             this.setState({ refreshing: true })
                             axios.get(`/icym.php?method=icy.getCollocationList&appId=4&page=${this.state.page}&pageSize=10&categoryId=${this.state.id}`).then(res => {
+                                var pages = JSON.parse(JSON.stringify(this.state.page))
+                                // console.log(pages)
                                 this.setState({
                                     waterfulllist: [...this.state.waterfulllist, ...res.data.data.list],
                                     refreshing: false,
-                                    page: this.state.pages++
+                                    page: pages++
                                 })
                             })
                         }}
@@ -32,7 +34,7 @@ class IconWaterfull extends PureComponent {
                         <ul className={scss.IconWaterfull_ul}>
                             {
                                 this.state.waterfulllist.map((item, index) =>
-                                    <li key={index} className={index === 1 ? scss.IconWaterfull_tsli : scss.IconWaterfull_li}>
+                                    <li key={index} className={index === 1 ? scss.IconWaterfull_tsli : scss.IconWaterfull_li} onClick={()=>this.handeClick(item.collocationId)}>
                                         <img src={this.imagesrc(item.image.image)} alt="暂无此图片" className={index === 1 ? scss.IconWaterfull_tsimg : scss.IconWaterfull_img} />
                                         {
                                             item.type === 0 ?
@@ -67,7 +69,9 @@ class IconWaterfull extends PureComponent {
         refreshing: false,
         height: 0,
         page: 2,
-        pages: 2,
+    }
+    handeClick = (id)=>{
+        console.log(this.props,id)
     }
     componentDidMount() {
         // console.log(ReactDOM.findDOMNode(this.ptr).offsetTop)
