@@ -1,3 +1,12 @@
+// *{ margin:0; padding:0; box-sizing:border-box;}
+img{
+    display: block;
+}
+.big{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+}
 .goods_bigPic{
     position: relative;
 }
@@ -15,24 +24,107 @@
     width: 750px;
 }
 .goods_qbdp{
-
+    flex:1;
 }
 .goods_qbdp p{
     font-size: 38px;
-    font-weight: bold;
+    // font-weight: bold;
     text-indent: 32px;
     margin-top:40px;
     margin-bottom: 26px;
 }
 .goods_qbdp_select{
-    height:630px;
+    height:3030px;
 }
-.goods_qbdp_top{
+// .goods_qbdp_top{
 
-}
+// }
 .goods_qbdp_bottom{
+    width:100%;
+    // height: auto;
+    display: flex;
+    flex-wrap:wrap;
+    .goods_imgs{
+        width: 50%;
+        // height: auto;
+        // background-color: #ee0707;
+        .goods_imgss{
+            width:100%;
+            height: 460px;
+            // height:100%;
+            // display: block;
+            // position: absolute;
+            // left:50%;
+            // top:50%;
+            // transform: translate(-50%,-50%);
+            border:4px solid white;
+        }
+    }
+    
+}
+// .goods_imgs{
+//     position: relative;
+// }
+.goods_qbdp_size{
+    width:720px;
+    margin-left: 10px;
+    height:90px;
+    position: relative;
+    text-align: left;
+}
+
+.goods_qbdp_size_ab{
+    position: absolute;
+    left:0;top:0;right:0;bottom:0;
+    margin:auto;
+}
+.goods_qbdp_clothType{
+    width:720px;
+    margin-left: 10px;
+    height:90px;
+    line-height: 90px;
+}
+.goods_qbdp_element{
+    width:720px;
+    margin-left: 10px;
+    height:90px;
+    line-height: 90px;
+}
+.goods_qbdp_sx{
+    width:720px;
+    margin-left: 10px;
+    height:90px;
+    line-height: 90px;
+}
+.goods_qbdp_sales,.goods_qbdp_prices{
+    width:720px;
+    margin-left: 10px;
+    height:90px;
+    line-height: 90px;
+}
+.goods_qbdp_zhpx{
+    width:720px;
+    margin-left: 10px;
+    height:90px;
+    line-height: 90px;
+}
+.goods_qbdp_zhpx ul{
+    display: flex;
+    height:90px;
+}
+.goods_qbdp_zhpx ul li{
+    // width:87px;
+    width:50%;
+    flex:1;
+    // float: left;
+    list-style: none;
+    font-size: 24px;
+    text-align: center;
+   
 
 }
-.goods_qbdp_size{
-    
+.goods_qbdp .goods_p{
+    font-size: 28px;
+    margin-bottom: 16px;
+    margin-top:20px;
 }
