@@ -4,6 +4,7 @@ import Swiper from 'swiper/dist/js/swiper'
 import 'swiper/dist/css/swiper.min.css'
 import {PullToRefresh} from 'antd-mobile'
 import ReactDOM from 'react-dom'
+import axios from 'axios'
 class Goods extends React.Component{
   ptr=null;
   state={
@@ -27,16 +28,16 @@ class Goods extends React.Component{
         <div className={css.goods_bigPic_oneDiv}>
           <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4" alt="暂无此图片"></a>
           <a href="http://icy.design/icy/search?keyword=%E8%BF%9E%E8%A1%A3%E8%A3%99&sortType=0&appId=4" alt="暂无此图片"></a>
-          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4"></a>
-          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4"></a>
-          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4"></a>
-          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4"></a>
-          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4"></a>
-          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4"></a>
-          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4"></a>
-          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4"></a>
-          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4"></a>
-          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4"></a>
+          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4" alt="暂无此图片"></a>
+          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4" alt="暂无此图片"></a>
+          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4" alt="暂无此图片"></a>
+          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4" alt="暂无此图片"></a>
+          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4" alt="暂无此图片"></a>
+          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4" alt="暂无此图片"></a>
+          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4" alt="暂无此图片"></a>
+          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4" alt="暂无此图片"></a>
+          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4" alt="暂无此图片"></a>
+          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4" alt="暂无此图片"></a>
         </div>
       </div>
       <img src="https://image3.ichuanyi.cn/ai-admin/c031cfb79942ead5c0a82c3f6d214a45.jpg" className={css.goods_banner}/>
@@ -147,9 +148,10 @@ class Goods extends React.Component{
                     overflow: 'auto',
                     width:'100%',
                     display:'flex',
-                    flexWrap:'wrap' 
+                    flexWrap:'wrap' ,
+                    // border:'2px solid black'
                   }}
-                  
+                  cancelable={'false'}
                   direction={'up'}
                   refreshing={this.state.refreshing}
                   onRefresh={() => {
@@ -157,37 +159,38 @@ class Goods extends React.Component{
                     axios.get(`/icym.php?method=icy.getGoodsList&appId=4&page=${this.state.page}&pageSize=5&sortType=0`).then(res=>{
                       console.log(res.data)
                       this.setState({
+                        refreshing: false,
                         datalistpic:[...this.state.datalistpic,...res.data.data.list],
                         page:this.state.page+1,
                         height:document.documentElement.clientHeight-ReactDOM.findDOMNode(this.ptr).offsetTop+"px"
                       })
                     })
-                    setTimeout(() => {
+                    // setTimeout(() => {
                   
-                      this.setState({ 
-                        refreshing: false,
-                        datalistpic:[...this.state.datalistpic]
-                      });
-                    }, 1000);
+                    //   this.setState({ 
+                       
+                    //     // datalistpic:[...this.state.datalistpic]
+                    //   });
+                    // }, 1000);
                   }}
                 >
                   {this.state.datalistpic.map((item,index) => (
-                    <div key={index} style={{width:'50%'}}>
+                    <div key={index} style={{width:'50%',height: 'auto',float:'left'}}>
                         <img src={'https://image3.ichuanyi.cn/'+item.image.image} className={css.goods_imgss} style={{width:'100%'}}/>
                         <p className={css.goods_p}>{item.name}</p>
                         <div style={{fontSize:'28px',textIndent:'20px'}}>{'￥'+item.price}</div>
                     </div>
                   ))}
       </PullToRefresh>
-                    {
+                    {/* {
                       this.state.datalistpic.map(item=>{
-                        return <div key={item.goodsId} className={css.goods_imgs}>
+                        return <div key={item.goodsId} className={css.goods_imgs} style={{width:'50%'}}>
                           <img src={'https://image3.ichuanyi.cn/'+item.image.image} className={css.goods_imgss}/>
                           <p className={css.goods_p}>{item.name}</p>
                           <div style={{fontSize:'28px',textIndent:'20px'}}>{'￥'+item.price}</div>
                         </div>
                       })
-                    }
+                    } */}
                       
               </div>
           </div>
