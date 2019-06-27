@@ -18,7 +18,7 @@ const router = (
               </Designer>
           }/>
           <Route path="/icy/icon" component={Icon}/>
-          <Route path="/icy/suitDetail" component={Suitdetail}/>
+          <Route path="/icy/suitDetail/:id" component={Suitdetail}/>
           <Route path="/icy/goods" render={()=>
             <Goods />
           }/>
