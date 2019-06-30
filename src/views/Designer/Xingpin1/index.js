@@ -1,41 +1,46 @@
 import React from 'react'
 import css from './index.module.scss'
-import Swiper from 'swiper/dist/js/swiper'
 
-class Xinpin extends React.Component{
+class Xinpin1 extends React.Component{
   state = {
-    list: null,
-    title:null
+    list:null
   }
   render(){
-    return (
+    return (  
       <div>
-        <div style={{marginTop : '50px'}}>
-          <div className="home-line"></div>
+        <div className="home-line"></div>
+        {
+          this.state.list?
           <div>
             <div>
               <div className={css.sectiontitle}>
                 <div className={css.fleft}>
                   {
-                    this.state.title?
-                    <p className={css.tille}>{this.state.title}</p>
+                    this.state.list.title?
+                    <p className={css.tille}>{this.state.list.title}</p>
                     :null
                   }
                   <p className={css.line}></p>
-                </div>
-                <div className={css.flaft}>
-                  <p className={css.more}>查看更多</p>
                 </div>
                 <div className={css.qfd}></div>
               </div>
             </div>
             {
-              this.state.list?
-              <div style={{marginLeft:'20px',position:'relative'}}>
+              this.state.list.list.map(item => 
+                <div style={{marginBottom:'20px'}} key={item.contentId}>
+                  <header className={css.headerr}>
+                    <div className={css.beforee}></div>
+                    <div style={{width:'750px',height:'421px'}}>
+                      <img src={'https://image3.ichuanyi.cn/' + item.banner.image} alt=""
+                        style={{width:"750px"}}
+                      />
+                    </div>
+                  </header>
+                  <div style={{marginLeft:'20px',position:'relative'}}>
                 <div className="swiper-container xppxinpin">
                   <div className="swiper-wrapper">
                     {
-                      this.state.list.map(item =>
+                      item.goods.map(item =>
                         <div className="swiper-slide" style={{marginRight:'20'}} key={item.goodsId}>
                           <div style={{position:'relative',width:'300px',overflow:'hidden'}}>
                             <div style={{overflow:'hidden'}}>
@@ -60,27 +65,27 @@ class Xinpin extends React.Component{
                   </div>
                 </div>
               </div>
-              :null
+                </div>
+              )
             }
           </div>
-        </div>
+          :null
+        }
       </div>
     )
   }
   componentWillReceiveProps(props){
-    //  console.log(props.list[props.sj])
+    // console.log(props.list[props.sj])
     this.setState({
-      list: props.list[props.sj].list,
-      title: props.list[props.sj].title
-    },()=>{
-      new Swiper('.xppxinpin', {
-        slidesPerView: 2.5,
-        spaceBetween: 30,
-      });
+     list: props.list[props.sj]
     })
   }
 }
 
-export default Xinpin
-
-// https://image3.ichuanyi.cn/Files/14/b7/1a/14b71aa46ab9878aa1e157cb698a169a52b3fcfc_263117.jpg
+/*,()=>{
+      new Swiper('.xppxinpin', {
+        slidesPerView: 2.5,
+        spaceBetween: 30,
+      });
+    } */
+export default Xinpin1

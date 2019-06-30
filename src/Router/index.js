@@ -7,6 +7,7 @@ import Icon from '../views/Icon'
 import Goods from '../views/Goods'
 import store from './../Redux/store'
 import Suitdetail from './../views/Suitdetail'
+
 const router = (
   <Provider store={store}>
     <Router>

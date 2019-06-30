@@ -5,6 +5,7 @@ import Shejishi from './Shejishi'
 import {connect} from 'react-redux'
 import Baokuan from './baokuan'
 import Xinpin from './Xinpin'
+import Xinpin1 from './Xingpin1'
 import Mingxing from './Mingxing'
 class Designer extends React.Component{
   state = {
@@ -17,8 +18,11 @@ class Designer extends React.Component{
       <Swipe />
       <Shejishi list={this.state.list}/>
       <Baokuan list={this.state.list}/>
-      <Xinpin list={this.state.list}/>
-      <Mingxing list={this.state.list}/>
+      <Xinpin list={this.state.list} sj="3"/>
+      <Xinpin list={this.state.list} sj="4"/>
+      {/* <Xinpin1 list={this.state.list} sj="5"/>
+      <Xinpin1 list={this.state.list} sj="6"/> */}
+      <Mingxing list={this.state.list} sj="5"/>
     </div>
   }
   componentWillMount(){
