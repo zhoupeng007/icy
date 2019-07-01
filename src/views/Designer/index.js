@@ -20,9 +20,9 @@ class Designer extends React.Component{
       <Baokuan list={this.state.list}/>
       <Xinpin list={this.state.list} sj="3"/>
       <Xinpin list={this.state.list} sj="4"/>
-      {/* <Xinpin1 list={this.state.list} sj="5"/>
-      <Xinpin1 list={this.state.list} sj="6"/> */}
-      <Mingxing list={this.state.list} sj="5"/>
+      <Xinpin1 list={this.state.list} sj="5"/>
+      {/* <Xinpin1 list={this.state.list} sj="6"/> */}
+      <Mingxing list={this.state.list} sj="6"/>
     </div>
   }
   componentWillMount(){
