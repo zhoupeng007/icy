@@ -7,6 +7,14 @@ import Icon from '../views/Icon'
 import Goods from '../views/Goods'
 import store from './../Redux/store'
 import Suitdetail from './../views/Suitdetail'
+import Search from '../views/Search'
+import Sousuo from '../views/Search/Sousuo'
+import Detail from '../views/Detail'
+// const Auth={
+//   isSousuo(){
+//     return true
+//   }
+// }
 const router = (
   <Provider store={store}>
     <Router>
@@ -19,9 +27,23 @@ const router = (
           }/>
           <Route path="/icy/icon" component={Icon}/>
           <Route path="/icy/suitDetail" component={Suitdetail}/>
+          <Route path="/icy/me" render={()=>
+            <Redirect to="/icy/designer" />
+          }/>
           <Route path="/icy/goods" render={()=>
             <Goods />
           }/>
+          <Route path='/icy/sousuo' component={Sousuo}/> 
+          <Route path='/icy/goodsdetail' component={Detail}/>
+          <Route path='/icy' component={Search}/>
+          
+          {/* <Route path='/icy' render={()=>
+              Auth.isSousuo?
+              <Search/>:
+              <Redirect to="/icy/search"/>
+          }/> 
+          */}
+           
           <Redirect from="/" to="/icy/designer" />
         </Switch>
       </App>

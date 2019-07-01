@@ -5,6 +5,11 @@ import 'swiper/dist/css/swiper.min.css'
 import {PullToRefresh} from 'antd-mobile'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
+import {withRouter} from 'react-router'
+// import { createConnection } from 'net';
+import {NavLink} from 'react-router-dom'
+import Sousuo from '../Search/Sousuo'
+import {Redirect} from 'react-router-dom'
 class Goods extends React.Component{
   ptr=null;
   state={
@@ -18,29 +23,33 @@ class Goods extends React.Component{
     data:[111,222,333,444],
     page:1,
     refreshing:true,
-    height:0
-
+    height:0,
+    datalistli:["衬衫","连衣裙","半身裙","短裤","阔腿裤","牛仔裤","T恤","卫衣","针织衫","风衣","西装","西裤"],
+    img:null
   }
   render(){
     return <div className={css.big}>
+      <div className={css.goods_xitop}>
+        {/* 点击input框显示Sousuo组件 */}
+        <div className={css.goods_xitop_middle}>
+          <input type="text" placeholder="连衣裙" onClick={this.handleClick} />
+          <span className={css.goods_xitop_input}></span>
+        </div>
+        <div className={css.tupian1}></div>
+        <div className={css.tupian2}></div>
+      </div>
       <div className={css.goods_bigPic}>
-        <img src="https://image3.ichuanyi.cn/ai-admin/48d7f2758092e683ba59122bbaf5cc1b.jpg"/>
+        <img src="https://image3.ichuanyi.cn/ai-admin/48d7f2758092e683ba59122bbaf5cc1b.jpg" alt="goods"/>
         <div className={css.goods_bigPic_oneDiv}>
-          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4" alt="暂无此图片"></a>
-          <a href="http://icy.design/icy/search?keyword=%E8%BF%9E%E8%A1%A3%E8%A3%99&sortType=0&appId=4" alt="暂无此图片"></a>
-          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4" alt="暂无此图片"></a>
-          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4" alt="暂无此图片"></a>
-          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4" alt="暂无此图片"></a>
-          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4" alt="暂无此图片"></a>
-          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4" alt="暂无此图片"></a>
-          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4" alt="暂无此图片"></a>
-          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4" alt="暂无此图片"></a>
-          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4" alt="暂无此图片"></a>
-          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4" alt="暂无此图片"></a>
-          <a href="http://icy.design/icy/search?keyword=%E8%A1%AC%E8%A1%AB&sortType=0&appId=4" alt="暂无此图片"></a>
+            {
+              this.state.datalistli.map(item=>{
+                return <li key={item}><NavLink to={'/icy/search?keyword='+item} ></NavLink></li>
+              })
+            }
+          
         </div>
       </div>
-      <img src="https://image3.ichuanyi.cn/ai-admin/c031cfb79942ead5c0a82c3f6d214a45.jpg" className={css.goods_banner}/>
+      <img src="https://image3.ichuanyi.cn/ai-admin/5af93e4a2ef479eb6fb461543c84463f.gif" alt="goods" className={css.goods_banner}/>
       <div className={css.goods_qbdp}>
           <p >全部单品</p>
           <div className={css.goods_qbdp_select}>
@@ -157,7 +166,7 @@ class Goods extends React.Component{
                   onRefresh={() => {
                     this.setState({ refreshing: true });
                     axios.get(`/icym.php?method=icy.getGoodsList&appId=4&page=${this.state.page}&pageSize=5&sortType=0`).then(res=>{
-                      console.log(res.data)
+                      
                       this.setState({
                         refreshing: false,
                         datalistpic:[...this.state.datalistpic,...res.data.data.list],
@@ -169,14 +178,14 @@ class Goods extends React.Component{
                   
                     //   this.setState({ 
                        
-                    //     // datalistpic:[...this.state.datalistpic]
+                    //     datalistpic:[...this.state.datalistpic]
                     //   });
                     // }, 1000);
                   }}
                 >
                   {this.state.datalistpic.map((item,index) => (
                     <div key={index} style={{width:'50%',height: 'auto',float:'left'}}>
-                        <img src={'https://image3.ichuanyi.cn/'+item.image.image} className={css.goods_imgss} style={{width:'100%'}}/>
+                        <img src={'https://image3.ichuanyi.cn/'+item.image.image} alt="goods" className={css.goods_imgss} style={{width:'100%'}}/>
                         <p className={css.goods_p}>{item.name}</p>
                         <div style={{fontSize:'28px',textIndent:'20px'}}>{'￥'+item.price}</div>
                     </div>
@@ -198,17 +207,34 @@ class Goods extends React.Component{
     
   </div>
   }
-
+  // handleInput(){
+  //   console.log(this.props)
+  //   console.log("lala")
+  //   this.setState({
+  //     isshow:false
+  //   })
+  //   // if(isshow){
+  //   //   return 
+  //   // }
+  //   // return <
+    
+  // }
+  handleClick = ()=>{
+    console.log(this.props)
+    this.props.history.push('/icy/sousuo')
+  }
   componentDidMount() {
       axios.get('/icym.php?method=icy.getGoodsCategoryList&appId=4').then(res=>{
-        console.log(res.data.data.filters.sizes)
+        // console.log(res.data.data.filters.sizes)
+        // console.log(res.data)
         this.setState({
           datalist:res.data.data.filters.sizes,
           datalist2:res.data.data.filters.categories,
           datalist3:res.data.data.filters.elements,
           datalist4:res.data.data.filters.upNew,
           datalist5:res.data.data.filters.sales,
-          datalist6:res.data.data.filters.prices     
+          datalist6:res.data.data.filters.prices , 
+          img:res.data.data.banners[1].image.image
         },()=>{
           new Swiper('.goodsswiper', {
             slidesPerView : 6,
@@ -230,9 +256,9 @@ class Goods extends React.Component{
           })
         })
       })
-
+      console.log(this.ptr)
       axios.get(`/icym.php?method=icy.getGoodsList&appId=4&page=${this.state.page}&pageSize=5&sortType=0`).then(res=>{
-        console.log(res.data.data.list)
+        // console.log(res.data.data.list)
         
         this.setState({
           datalistpic:[...this.state.datalistpic,...res.data.data.list],
@@ -240,13 +266,20 @@ class Goods extends React.Component{
         })
       })
       
-
+      // axios.get(`/icym.php?method=icy.getGoodsCategoryList&appId=4`).then(res=>{
+      //   console.log(res.data.data.banners[1].image.image)
+      //   this.setState({
+      //     img:res.data.data.banners[1].image.image
+      //   })
+      // })
 
 
 
    
 }
-  
+// headleList=(id)=>{
+//   return `icy/serch/${id}`
+// }
 }
 
-export default Goods
+export default withRouter(Goods)
