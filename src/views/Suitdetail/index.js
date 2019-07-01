@@ -2,6 +2,7 @@ import React from 'react'
 import scss from './scss.module.scss'
 // import DetailTop from './DetailTop'
 import axios from 'axios';
+import {connect} from 'react-redux'
 import { Carousel, WingBlank } from 'antd-mobile';
 import DetailWaterfull from './DetailWaterfull'
 class Suitdetail extends React.Component {
@@ -70,7 +71,7 @@ class Suitdetail extends React.Component {
     }
     componentDidMount() {
         var id = this.props.history.location.pathname.split("/")[3]
-        // console.log(id)
+        // console.log(this.props.history.location)
         axios.get(`/m.php?method=icy.getCollocationInfo&appId=4&collocationId=${id}`).then(res => {
             // console.log(res.data.data)
             this.setState({
@@ -90,6 +91,24 @@ class Suitdetail extends React.Component {
     imgsrc(src) {
         return "https://image3.ichuanyi.cn/" + src
     }
+    componentWillMount(){
+      this.props.Hide()
+    }
+    componentWillUnmount(){
+      this.props.Show()
+    }
+}
+const subscribe = ()=>{
 
 }
-export default Suitdetail
+const dispatch = {
+  Show:()=>({
+    type:'ShowTabbar',
+    payload:true
+  }),
+  Hide:()=>({
+    type:'HideTabbar',
+    payload:false
+  })
+}
+export default connect(subscribe,dispatch)(Suitdetail)
