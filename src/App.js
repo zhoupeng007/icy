@@ -2,6 +2,7 @@ import React from 'react';
 import Tabbar from './Component/Tabbar'
 import './App.scss'
 import 'swiper/dist/css/swiper.css'
+import {connect} from 'react-redux'
 
 function App(props) {
   return (
@@ -9,9 +10,18 @@ function App(props) {
       {
         props.children
       }
-      <Tabbar />
+      {
+        props.isShow?
+        <Tabbar />
+        :null
+      }
+        
     </div>
   );
 }
-
-export default App;
+const subscribe= (state)=>{
+  return{
+    isShow:state.isShow
+  }
+}
+export default connect(subscribe)(App);

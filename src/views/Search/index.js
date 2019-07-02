@@ -3,6 +3,7 @@ import css from './index.module.scss'
 import axios from'axios'
 import {PullToRefresh} from 'antd-mobile'
 import ReactDOM from 'react-dom'
+import {connect} from 'react-redux'
 class Search extends React.Component{
     state={
         datalist:[],
@@ -22,7 +23,7 @@ class Search extends React.Component{
                         <span style={{width:'100px',height:'40px',display:'inline-block',background:'#d8b3a1',position:'absolute',top:'30px',textAlign:'center',fontSize:'24px',lineHeight:'40px',marginLeft:'10px'}}>
                             {decodeURI(this.state.word)} X
                         </span>
-                        <input type="text"className={css.search_boxTopOneMiddleInput} onClick={this.handleClick}/>
+                        <input type="text"className={css.search_boxTopOneMiddleInput} onClick={this.handleClick1}/>
                         <div></div>
                     </div>
                     <div className={css.search_boxTopOneRight}>搜索</div>
@@ -77,13 +78,7 @@ class Search extends React.Component{
                       })
                       
                     })
-                    // setTimeout(() => {
-                  
-                    //   this.setState({ 
-                       
-                    //     datalistpic:[...this.state.datalistpic]
-                    //   });
-                    // }, 1000);
+                    
                   }}
                 >
                   {this.state.datalist.map((item,index) => (
@@ -99,7 +94,7 @@ class Search extends React.Component{
             
         </div>
     }
-    handleClick=()=>{
+    handleClick1=()=>{
         console.log(this.props)
         this.props.history.push(`/icy/sousuo`)
     }
@@ -157,5 +152,24 @@ class Search extends React.Component{
             })
         })
     }
+    componentWillMount(){
+        this.props.Hide()
+    }
+    componentWillUnmount(){
+        this.props.Show()
+    }
 }
-export default Search
+const subscribe = ()=>{
+
+}
+const dispatch = {
+  Show:()=>({
+    type:'ShowTabbar',
+    payload:true
+  }),
+  Hide:()=>({
+    type:'HideTabbar',
+    payload:false
+  })
+}
+export default connect(subscribe,dispatch)(Search)

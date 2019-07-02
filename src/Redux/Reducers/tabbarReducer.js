@@ -1,14 +1,13 @@
-const tabbarReducer = (prevState=true,action)=>{
-  // console.log(action)
+const ShowTabbar = (prevState = true,action)=>{
   let {type,payload} = action
-  switch(type){
+  switch (type) {
     case 'ShowTabbar':
-      return payload
+        return payload
     case 'HideTabbar':
-      return payload
+        return payload
     default:
-      return prevState
+        return prevState
   }
-  // return newstate
 }
-export default tabbarReducer
+
+export default ShowTabbar

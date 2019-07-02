@@ -1,0 +1,139 @@
+.item{
+  border: 2px solid hsla(0,0%,96.1%,.842);
+  margin-bottom: 48px;
+  margin-left: 60px;
+  padding-bottom: 15px;
+  position: relative;
+}
+.sectiontitle {
+  padding: 24px 20px 30px;
+}
+.fleft{
+  float: left;
+}
+.flaft{
+  float: right;
+}
+.tille{
+  color: #333;
+  font-size: 38px;
+  font-weight: 700;
+}
+.line{
+  background: #ffaf90;
+  height: 4px;
+  margin-top: 28px;
+  width: 36px;
+}
+.more{
+    color: #999;
+    font-size: 28px;
+    line-height: 26px;
+    margin-top: 10px;
+    padding-right: 20px;
+}
+.qfd{
+  clear: both;
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+.goodinfo{
+  -webkit-box-align: center;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.juzhong{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%)
+}
+.headerr{
+  margin-bottom: 20px;
+  margin-top: 20px;
+  position: relative;
+  width: 750px;
+}
+.headerrr{
+  box-shadow: 4px 4px 12px rgba(19,19,19,.28);
+  height: 140px;
+  left: -30px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 140px;
+}
+.descr{
+  color: #333;
+  font-size: 28px;
+  height: 40px;
+  line-height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 480px;
+}
+.linee{
+  background-color: #333;
+  height: 6px;
+  margin-bottom: 8px;
+  margin-top: 18px;
+  width: 56px;
+}
+.doc{
+  background-color: #5b5b5b;
+  border-radius: 50%;
+  display: inline-block;
+  height: 8px;
+  margin-right: 10px;
+  margin-top: 12px;
+  vertical-align: middle;
+  width: 8px;
+}
+.country{
+  align-content: center;
+  color: #5b5b5b;
+  display: flex;
+  font-size: 22px;
+  font-weight: lighter;
+  height: 32px;
+  line-height: 32px;
+}
+.descc{
+  color: #000;
+  font-size: 32px;
+  font-weight: 700;
+  height: 44px;
+  line-height: 44px;
+  margin-bottom: 2px;
+}
+.desc{
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  display: flex;
+  flex-direction: column;
+  height: 148px;
+  margin-left: 152px;
+}
+.headerrrr{
+  width: 140px;
+  height: 173px;
+  display: block;
+}
+.beforee{
+  border-color: transparent transparent #fff;
+  border-style: solid;
+  border-width: 0 20px 20px;
+  bottom: -1px;
+  height: 0;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 0;
+  z-index: 12;
+}

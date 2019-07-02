@@ -1,10 +1,12 @@
 import React from "react"
 import css from './index.module.scss'
 import axios from 'axios'
+import {connect} from 'react-redux'
 class Sousuo extends React.Component{
     state={
         datalisthot:[],
-        isshow:true
+        // isshow:true
+        datalist:[]
     }
     render(){
         return <div>
@@ -24,10 +26,20 @@ class Sousuo extends React.Component{
                     <p>最近搜索</p>
                     <div className={css.shanchu} onClick={this.handleClick}></div>
                 </div>
-                <div className={css.sousuobox}>
-                    {/* <a href="#">连衣裙</a> */}
-                    
+                {
+                    this.state.datalist?
+                    <div className={css.sousuobox}>
+                   
+                    {
+                        this.state.datalist.map(item=>{
+                            return <a href="#" key={item.keyword}>{item.keyword}</a>
+                        })
+                    }
+
                 </div>
+                :null
+                }
+                
             </div>
             <div className={css.sousuo_rmss}>
                 <div style={{width:'100%',
@@ -46,11 +58,11 @@ class Sousuo extends React.Component{
            
         </div>
     }
-    handleClick(){
-        this.setState({
-            isshow:false
-        })
-    }
+    // handleClick(){
+    //     this.setState({
+    //         isshow:false
+    //     })
+    // }
     handleClickReturn(){
         this.props.history.go(-1)
     }
@@ -65,5 +77,31 @@ class Sousuo extends React.Component{
             })
         })
     }
+    componentWillMount(){
+        this.props.Hide()
+        var datalist3=localStorage.getItem("name")
+        var zh=JSON.parse(datalist3)
+        console.log(datalist3)
+        this.setState({
+            datalist:zh
+        })
+    }
+    componentWillUnmount(){
+        this.props.Show()
+    }
 }
-export default Sousuo;
+const subscribe = ()=>{
+
+}
+const dispatch = {
+  Show:()=>({
+    type:'ShowTabbar',
+    payload:true
+  }),
+  Hide:()=>({
+    type:'HideTabbar',
+    payload:false
+  })
+}
+
+export default connect(subscribe,dispatch)(Sousuo);
